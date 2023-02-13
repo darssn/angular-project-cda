@@ -31,6 +31,9 @@ import {MatInputModule} from '@angular/material/input';
     MatIconModule,
     FormsModule,
     Ng2SearchPipeModule
+  ],
+  exports:[
+    DisplayAllComponent
   ]
 })
 export class CatalogModule { }
