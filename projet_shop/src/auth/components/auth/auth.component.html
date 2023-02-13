@@ -1,0 +1,27 @@
+<p>Authentification</p>
+
+<ng-container  *ngIf="!(isConnected$ | async )">
+<form [formGroup]="auth" (ngSubmit)="onSubmit()" >
+
+    <label for="mail">
+        Email :
+    </label>
+    <input type="email" id="mail" formControlName="mail">
+    <label for="pwd">
+        Password :
+    </label>
+    <input type="password" id="pwd" formControlName="pwd">
+
+    <button type="submit">Connect</button>
+
+
+</form>
+</ng-container>
+
+
+<ng-container *ngIf="isConnected$ | async ">
+
+    <p>Bienvenu : {{user?.mail}}</p>
+
+    <button (click)="disconnect()">Disconnect</button>
+</ng-container>
