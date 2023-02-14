@@ -5,6 +5,8 @@ import { AuthService } from 'src/services/authService/auth.service';
 import { ConnexionService } from 'src/services/connexionService/connexion.service';
 import { UserService } from 'src/services/userService/user.service';
 import { User } from 'src/models/user';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCartComponent } from 'src/cart/components/dialog-cart/dialog-cart.component';
 
 @Component({
   selector: 'app-auth',
@@ -16,11 +18,16 @@ export class AuthComponent implements OnInit {
   user: User | undefined;
   isConnected! :boolean;
 
+ 
+
+
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private connexionService: ConnexionService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -51,5 +58,14 @@ export class AuthComponent implements OnInit {
   disconnect() {
     this.connexionService.disconnect();
     this.isConnected = false;
+  }
+
+  openDialog(): void {
+    console.log('openDialog');
+    const dialogRef = this.dialog.open(DialogCartComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
