@@ -1,0 +1,18 @@
+.rating-stars {
+  display: inline-block;
+}
+
+.rating-stars>i {
+  display: inline-block;
+  margin-right: 2px;
+  color: #ccc;
+  font-size: 1.5em;
+}
+
+.rating-stars .filled {
+  color: #f1c40f;
+}
+
+.rating-stars>i:last-child {
+  margin-right: 0;
+}

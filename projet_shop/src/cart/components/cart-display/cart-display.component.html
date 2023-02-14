@@ -1,0 +1,33 @@
+<table mat-table [dataSource]="dataSource" class="matelevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> id </th>
+        <td mat-cell *matCellDef="let item"> {{item.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let item"> {{item.product.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let item"> {{item.product.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let item"> {{item.quantity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Total </th>
+        <td mat-cell *matCellDef="let item"> {{item.product.price * item.quantity}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<div>
+    <p>Total : <span>{{totalCost | currency:'EUR'}}</span></p>
+    <button mat-raised-button color="primary" (click)="openSnackBar(message, action)">Checkout</button>
+
+</div>

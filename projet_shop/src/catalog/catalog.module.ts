@@ -14,12 +14,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import { RatingStarsComponent } from './components/rating-stars/rating-stars.component';
 
 @NgModule({
   declarations: [
     DisplayAllComponent,
     ProductCardComponent,
-    AddToCartComponent
+    AddToCartComponent,
+    RatingStarsComponent
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CatalogModule } from 'src/catalog/catalog.module';
+import { CartModule } from 'src/cart/cart.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CatalogModule } from 'src/catalog/catalog.module';
     BrowserAnimationsModule,
     AuthModule,
     CatalogModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule, 
+    CartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
