@@ -6,17 +6,21 @@ import { CartDisplayComponent } from './components/cart-display/cart-display.com
 
 import {MatTableModule} from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DialogCartComponent } from './components/dialog-cart/dialog-cart.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
-    CartDisplayComponent
+    CartDisplayComponent,
+    DialogCartComponent
   ],
   imports: [
     CommonModule,
     CartRoutingModule,
     MatTableModule, 
-    MatSnackBarModule
-  ]
+    MatSnackBarModule,
+    MatDialogModule
+  ],
 })
 export class CartModule { }
