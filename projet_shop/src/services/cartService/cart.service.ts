@@ -25,14 +25,13 @@ export class CartService {
     let productInCart = cart.products.find((p) => p.product.id == product.id);
     let newproductCart: ProductCart;
     if (productInCart) {
-      newproductCart = productInCart;
+      productInCart.quantity++;
     } else {
       newproductCart = { id: 1, quantity: 1, product: product };
+      cart.products.push(newproductCart);
     }
     this.saveCart(cart);
-    if (this.user) {
-      this.user.cart = cart;
-    }
+    console.log(cart);
   }
 
   removeProductFromCart(product: Product) {
@@ -48,16 +47,29 @@ export class CartService {
     this.saveCart(cart);
   }
 
+  isInCart(product: Product): ProductCart | undefined {
+    let cart = this.getCart();
+    let productInCart = cart.products.find((p) => p.product.id == product.id);
+    return productInCart;
+  }
+
   saveCart(cart: Cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    if (this.user) {
+      this.user.cart = cart;
+    } else {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
   }
 
   getCart(): Cart {
-    let cart = localStorage.getItem('cart');
-    if (cart) {
-      return JSON.parse(cart);
-    } else {
-      return this.user?.cart || { id: 1, products: [] };
+    if (!this.userConnected) {
+      let cart = localStorage.getItem('cart');
+      if (cart) {
+        return JSON.parse(cart);
+      } else {
+        return { id: 1, products: [] };
+      }
     }
+    return this.user?.cart || { id: 1, products: [] };
   }
 }

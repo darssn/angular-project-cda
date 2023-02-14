@@ -51,5 +51,6 @@ export class AuthComponent implements OnInit {
   disconnect() {
     this.connexionService.disconnect();
     this.isConnected$ = of(this.connexionService.getConnected());
+    localStorage.removeItem('user');
   }
 }

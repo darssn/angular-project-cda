@@ -6,18 +6,14 @@ import { User } from 'src/models/user';
 import { UserService } from '../userService/user.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConnexionService {
-
   users: User[] = userMock;
 
-  constructor(
-    private userService: UserService
-  ) { }
+  constructor(private userService: UserService) {}
 
-  toConnect(mailEntry: string, pwdEntry: string ): void{
-
+  toConnect(mailEntry: string, pwdEntry: string): void {
     for (let user of this.users) {
       if (mailEntry === user.mail && user.pwd === pwdEntry) {
         this.toggleConnect();
@@ -26,12 +22,12 @@ export class ConnexionService {
     }
   }
 
-  disconnect(): void{
-      this.toggleConnect();
-      this.userService.deleteUser();
+  disconnect(): void {
+    this.toggleConnect();
+    this.userService.deleteUser();
   }
 
-  getConnected():boolean{
+  getConnected(): boolean {
     return Connexion_User?.USER_CONNECT;
   }
 

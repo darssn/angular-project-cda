@@ -24,5 +24,7 @@ export class UserService {
 
   deleteUser() {
     Connexion_User.USER = undefined;
+    localStorage.removeItem('user');
+    localStorage.removeItem('cart');
   }
 }
