@@ -8,20 +8,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccueilModule } from 'src/accueil/accueil.module';
-
+import { CatalogModule } from 'src/catalog/catalog.module';
+import { CartModule } from 'src/cart/cart.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AccueilModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    AuthModule,
+    CatalogModule,
+    Ng2SearchPipeModule,
+    CartModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

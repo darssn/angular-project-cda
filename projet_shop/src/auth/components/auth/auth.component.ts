@@ -9,11 +9,9 @@ import { User } from 'src/models/user';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
-
-
   auth!: FormGroup;
   isConnected$!: Observable<boolean>;
   user: User | undefined;
@@ -23,39 +21,35 @@ export class AuthComponent implements OnInit {
     private authService: AuthService,
     private connexionService: ConnexionService,
     private userService: UserService
-  )
-  {}
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
-    console.log('user : '+this.userService.getUser());
-    console.log('connected ? : '+this.connexionService.getConnected());
+    console.log('user : ' + this.userService.getUser());
+    console.log('connected ? : ' + this.connexionService.getConnected());
     this.isConnected$ = of(this.connexionService.getConnected());
   }
 
   createForm() {
     this.auth = this.fb.group({
       mail: null,
-      pwd: null
-    })
+      pwd: null,
+    });
   }
 
   onSubmit() {
     let formPwd = this.auth.get('pwd')?.value;
     let formMail = this.auth.get('mail')?.value;
-    this.authService.auth(formMail,formPwd); 
+    this.authService.auth(formMail, formPwd);
     this.user = this.userService.getUser();
-    if(this.connexionService.getConnected()){
+    if (this.connexionService.getConnected()) {
       this.createForm();
     }
     this.isConnected$ = of(this.connexionService.getConnected());
-
   }
 
-  disconnect(){
+  disconnect() {
     this.connexionService.disconnect();
     this.isConnected$ = of(this.connexionService.getConnected());
   }
-
-
 }
