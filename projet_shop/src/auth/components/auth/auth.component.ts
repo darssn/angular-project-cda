@@ -15,8 +15,8 @@ export class AuthComponent implements OnInit {
 
 
   auth!: FormGroup;
-  isConnected$!: Observable<boolean>;
   user: User | undefined;
+  isConnected! :boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +30,7 @@ export class AuthComponent implements OnInit {
     this.createForm();
     console.log('user : '+this.userService.getUser());
     console.log('connected ? : '+this.connexionService.getConnected());
-    this.isConnected$ = of(this.connexionService.getConnected());
+    this.isConnected = false;
   }
 
   createForm() {
@@ -47,14 +47,13 @@ export class AuthComponent implements OnInit {
     this.user = this.userService.getUser();
     if(this.connexionService.getConnected()){
       this.createForm();
+      this.isConnected = true ;
     }
-    this.isConnected$ = of(this.connexionService.getConnected());
-
   }
 
   disconnect(){
     this.connexionService.disconnect();
-    this.isConnected$ = of(this.connexionService.getConnected());
+    this.isConnected = false;
   }
 
 

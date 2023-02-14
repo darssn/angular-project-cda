@@ -1,27 +1,34 @@
-<p>Authentification</p>
+<ng-container *ngIf="!isConnected ">
+    <form [formGroup]="auth" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col">
+                <input type="email" id="mail" formControlName="mail" placeholder="Mail">
+            </div>
 
-<ng-container  *ngIf="!(isConnected$ | async )">
-<form [formGroup]="auth" (ngSubmit)="onSubmit()" >
+            <div class="col">
+                <input type="password" id="pwd" formControlName="pwd" placeholder="Password">
+            </div>
 
-    <label for="mail">
-        Email :
-    </label>
-    <input type="email" id="mail" formControlName="mail">
-    <label for="pwd">
-        Password :
-    </label>
-    <input type="password" id="pwd" formControlName="pwd">
-
-    <button type="submit">Connect</button>
-
-
-</form>
+            <div class="col">
+                <button type="submit">Connect</button>
+            </div>
+        </div>
+    </form>
 </ng-container>
+<ng-container *ngIf="isConnected ">
 
+    <div class="row">
+        <div class="col">
+            <p>Bienvenu {{user?.mail}}</p>
+        </div>
+        <div class="col-2">
+            <div class="img-cart">
+                <img src="../../../assets/img/shopping-cart-icon.png">
+            </div>
+        </div>
+        <div class="col">
+            <button (click)="disconnect()">Disconnect</button>
+        </div>
+    </div>
 
-<ng-container *ngIf="isConnected$ | async ">
-
-    <p>Bienvenu : {{user?.mail}}</p>
-
-    <button (click)="disconnect()">Disconnect</button>
 </ng-container>
