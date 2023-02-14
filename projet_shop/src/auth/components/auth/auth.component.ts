@@ -24,6 +24,10 @@ export class AuthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('user')) {
+      this.user = this.userService.getUser();
+      this.connexionService.toggleConnect();
+    }
     this.createForm();
     console.log('user : ' + this.userService.getUser());
     console.log('connected ? : ' + this.connexionService.getConnected());

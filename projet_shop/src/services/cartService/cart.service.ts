@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Cart } from 'src/models/cart';
 import { Product } from 'src/models/product';
 import { ProductCart } from 'src/models/productCart';
@@ -8,16 +8,23 @@ import { UserService } from 'src/services/userService/user.service';
 @Injectable({
   providedIn: 'root',
 })
-export class CartService {
+export class CartService implements OnInit {
   userConnected: boolean = false;
   user: User | undefined;
 
-  constructor(us: UserService) {
+  constructor(public us: UserService) {
     this.user = us.getUser();
     if (this.user) {
       this.userConnected = true;
     }
     console.log(this.user);
+  }
+
+  ngOnInit(): void {
+    this.user = this.us.getUser();
+    if (this.user) {
+      this.userConnected = true;
+    }
   }
 
   addProductToCart(product: Product) {
@@ -56,20 +63,17 @@ export class CartService {
   saveCart(cart: Cart) {
     if (this.user) {
       this.user.cart = cart;
-    } else {
-      localStorage.setItem('cart', JSON.stringify(cart));
     }
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
   getCart(): Cart {
-    if (!this.userConnected) {
-      let cart = localStorage.getItem('cart');
-      if (cart) {
-        return JSON.parse(cart);
-      } else {
-        return { id: 1, products: [] };
-      }
+    let cart = localStorage.getItem('cart');
+    cart = localStorage.getItem('cart');
+    if (cart) {
+      return JSON.parse(cart);
+    } else {
+      return this.user?.cart || { id: 1, products: [] };
     }
-    return this.user?.cart || { id: 1, products: [] };
   }
 }
