@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Connexion_User } from 'src/constants/connexion';
-import { userMock } from 'src/mock/user_mock';
+import { userMock } from 'src/mocks/user_mock';
+
 import { User } from 'src/models/user';
-import { UserService } from '../../userService/user.service';
+import { UserService } from '../userService/user.service';
 
 @Injectable({
   providedIn: 'root'

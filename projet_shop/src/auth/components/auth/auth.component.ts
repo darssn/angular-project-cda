@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-import { Connexion_User, } from 'src/constants/connexion';
-import { userMock } from 'src/mock/user_mock';
 import { AuthService } from 'src/services/authService/auth.service';
-import { ConnexionService } from 'src/services/authService/connexionService/connexion.service';
+import { ConnexionService } from 'src/services/connexionService/connexion.service';
 import { UserService } from 'src/services/userService/user.service';
 import { User } from 'src/models/user';
 

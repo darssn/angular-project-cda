@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { userMock } from 'src/mock/user_mock';
-import { User } from 'src/models/user';
-import { ConnexionService } from './connexionService/connexion.service';
-import { UserService } from '../userService/user.service';
+import { ConnexionService } from '../connexionService/connexion.service';
+
 
 
 @Injectable({
