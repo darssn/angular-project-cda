@@ -14,7 +14,7 @@ import { User } from 'src/models/user';
 export class AuthComponent implements OnInit {
   auth!: FormGroup;
   user: User | undefined;
-  isConnected! :boolean;
+  isConnected!: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -24,9 +24,13 @@ export class AuthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('user')) {
+      this.user = this.userService.getUser();
+      this.connexionService.toggleConnect();
+    }
     this.createForm();
-    console.log('user : '+this.userService.getUser());
-    console.log('connected ? : '+this.connexionService.getConnected());
+    console.log('user : ' + this.userService.getUser());
+    console.log('connected ? : ' + this.connexionService.getConnected());
     this.isConnected = false;
   }
 
@@ -44,12 +48,13 @@ export class AuthComponent implements OnInit {
     this.user = this.userService.getUser();
     if (this.connexionService.getConnected()) {
       this.createForm();
-      this.isConnected = true ;
+      this.isConnected = true;
     }
   }
 
   disconnect() {
     this.connexionService.disconnect();
     this.isConnected = false;
+    localStorage.removeItem('user');
   }
 }

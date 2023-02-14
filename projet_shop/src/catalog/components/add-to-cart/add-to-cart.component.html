@@ -1,17 +1,19 @@
-<div *ngIf="productInCart; then thenBlock else elseBlock"></div>
-<ng-template #thenBlock>
-    <mat-form-field class="example-form-field">
-        <mat-label>nbrItems</mat-label>
-        <input matInput type="number">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear">
-            <mat-icon>close</mat-icon>
-        </button>
-    </mat-form-field>
+<button mat-fab color="primary" aria-label="add to cart" (click)="onAddToCart()">
+    <mat-icon>add_shopping_cart</mat-icon>
+</button>
+
+<!-- <mat-form-field *ngIf="productCart?.quantity; then thenBlock else elseBlock"></mat-form-field>
+
+<ng-template #thenBlock class="example-button-container">
+    <mat-label>nbrItems</mat-label>
+    <input matInput type="number" [value]="productCart?.quantity">
+    <button matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+    </button>
 </ng-template>
-<ng-template #elseBlock>
-    <div class="example-button-container">
-        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-            <mat-icon>Ajouter au panier</mat-icon>
-        </button>
-    </div>
-</ng-template>
+
+<ng-template #elseBlock class="example-form-field">
+    <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>Ajouter au panier</mat-icon>
+    </button>
+</ng-template> -->
