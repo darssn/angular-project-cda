@@ -1,0 +1,10 @@
+.product-card-array {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 30px;
+}
+
+.product-card-component {
+  width: 30%;
+}

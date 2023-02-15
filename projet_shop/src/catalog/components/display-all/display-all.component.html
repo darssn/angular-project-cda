@@ -1,16 +1,12 @@
-<div>
-    <div>
-        <div class="product-array-header">
-            <mat-card-title>Recherche produit</mat-card-title>
-            <mat-card-subtitle>Plus de {{nbProducts}} produits sont disponibles immmédiatement</mat-card-subtitle>
-            <div class="seach_container">
-                <input class="search-field" type="text" name="search" [(ngModel)]="searchProduct" autocomplete="on"
-                    placeholder="Rechercher un produit">
-            </div>
-        </div>
+<div class="product-array-header">
+    <mat-card-title>Recherche produit</mat-card-title>
+    <mat-card-subtitle>Plus de {{nbProducts}} produits sont disponibles immmédiatement</mat-card-subtitle>
+    <div class="seach_container">
+        <input class="search-field" type="text" name="search" [(ngModel)]="searchProduct" autocomplete="on"
+            placeholder="Rechercher un produit">
     </div>
-    <div class="product-card-array">
-        <app-product-card class="product-card-component" *ngFor="let product of products | filter:searchProduct"
-            [product]="product"></app-product-card>
-    </div>
+</div>
+<div class="product-card-array">
+    <app-product-card class="product-card-component" *ngFor="let product of products | filter:searchProduct"
+        [product]="product"></app-product-card>
 </div>
