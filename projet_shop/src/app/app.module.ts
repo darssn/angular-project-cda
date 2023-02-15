@@ -8,6 +8,8 @@ import { AccueilModule } from 'src/accueil/accueil.module';
 import { CatalogModule } from 'src/catalog/catalog.module';
 import { CartModule } from 'src/cart/cart.module';
 import { AuthModule } from 'src/auth/auth.module';
+import { HeaderModule } from 'src/header/header.module';
+import { FooterModule } from 'src/footer/footer.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +23,8 @@ import { AuthModule } from 'src/auth/auth.module';
     CatalogModule,
     Ng2SearchPipeModule,
     CartModule,
+    HeaderModule,
+    FooterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

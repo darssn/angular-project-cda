@@ -10,7 +10,7 @@
             {{product.description}}
         </p>
         <div class=" price_container">
-            <p class="product_price">{{product.price}}</p>
+            <p class="product_price">{{product.price | currency:'EUR'}}</p>
         </div>
     </mat-card-content>
     <mat-card-actions>

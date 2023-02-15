@@ -1,0 +1,14 @@
+<a routerLink="category/{{category.id}}">
+    <mat-card class="category-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{category.name}}</mat-card-title>
+        </mat-card-header>
+        <ng-container *ngIf="category.image; else noImage">
+            <img mat-card-image [src]="category.image" alt="Image category">
+        </ng-container>
+        <ng-template #noImage>
+            <img mat-card-image src="../../../assets/img/logo_large.png" alt="Image category" class="image-category">
+        </ng-template>
+    </mat-card>
+</a>
