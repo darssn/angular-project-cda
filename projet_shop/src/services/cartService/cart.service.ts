@@ -76,4 +76,10 @@ export class CartService implements OnInit {
       return this.user?.cart || { id: 1, products: [] };
     }
   }
+
+  clearCart() {
+    let cart = this.getCart();
+    cart.products = [];
+    this.saveCart(cart);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -19,7 +19,7 @@ export class CartDisplayComponent implements OnInit {
   message = 'Commande envoyée !';
   action = 'OK';
 
-  constructor(private _snackBar: MatSnackBar, cartService: CartService) {
+  constructor(private _snackBar: MatSnackBar, public cartService: CartService) {
     this.cart = cartService.getCart();
     this.dataSource = this.cart.products;
     console.log(this.cart);
@@ -27,6 +27,7 @@ export class CartDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.totalCost = this.getTotalCost();
+    console.log(this.totalCost);
   }
 
   getTotalCost() {
@@ -36,6 +37,10 @@ export class CartDisplayComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
+    this.cartService.clearCart();
+    this.cart = this.cartService.getCart();
+    this.dataSource = this.cart.products;
+    this.totalCost = this.getTotalCost();
     this._snackBar.open(message, action);
   }
 }
